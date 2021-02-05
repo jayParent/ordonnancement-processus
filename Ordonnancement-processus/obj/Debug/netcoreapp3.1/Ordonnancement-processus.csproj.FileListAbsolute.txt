@@ -1,0 +1,16 @@
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.exe
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.deps.json
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.runtimeconfig.json
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.runtimeconfig.dev.json
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.dll
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\bin\Debug\netcoreapp3.1\Ordonnancement-processus.pdb
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.csprojAssemblyReference.cache
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement_processus.MenuCreationProcessus.resources
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement_processus.MenuPrincipal.resources
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.csproj.GenerateResource.cache
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.AssemblyInfoInputs.cache
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.AssemblyInfo.cs
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.csproj.CoreCompileInputs.cache
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.dll
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.pdb
+C:\Users\jerom\source\repos\Ordonnancement-processus\Ordonnancement-processus\obj\Debug\netcoreapp3.1\Ordonnancement-processus.genruntimeconfig.cache

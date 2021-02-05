@@ -1,14 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Ordonnancement_processus.Classes
 {
-    public class processus
+    public class Processus
     {
-        public int Id { get; set; }
+        public int Pid { get; set; }
         public string Nom { get; set; }
         public int Priorite { get; set; }
+        public int InstructionsCalculs { get; set; }
+        public int InstructionsEs { get; set; }
         public int Threads { get; set; }
+        public List<Instruction> Instructions { get; set; }
+
+        public Processus()
+        {
+        }
+
+        public Processus(string nom, int priorite, int instructionsCalculs, int instructionsEs, int threads)
+        {
+            Nom = nom;
+            Priorite = priorite;
+            InstructionsCalculs = instructionsCalculs;
+            InstructionsEs = instructionsEs;
+            Threads = threads;
+        }
+
+        public void CreateTable()
+        {
+            
+            
+        }
     }
 }
