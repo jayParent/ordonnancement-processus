@@ -14,6 +14,7 @@ namespace Ordonnancement_processus.Classes
         public int InstructionsEs { get; set; }
         public int Threads { get; set; }
         public List<Instruction> Instructions { get; set; }
+        public Random random = new Random();
 
         public Processus()
         {
@@ -21,6 +22,7 @@ namespace Ordonnancement_processus.Classes
 
         public Processus(string nom, int priorite, int instructionsCalculs, int instructionsEs, int threads)
         {
+            Pid = DateTime.UtcNow.Millisecond * random.Next(1, 100) - random.Next(1, 1000);
             Nom = nom;
             Priorite = priorite;
             InstructionsCalculs = instructionsCalculs;
@@ -30,7 +32,6 @@ namespace Ordonnancement_processus.Classes
 
         public void CreateTable()
         {
-            
             
         }
     }

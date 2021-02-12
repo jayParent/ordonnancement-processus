@@ -11,6 +11,8 @@ namespace Ordonnancement_processus
 {
     public partial class MenuCreationProcessus : Form
     {
+        public Processus Processus { get; set; }
+
         public MenuCreationProcessus()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace Ordonnancement_processus
             else if (radioButton_threeThreads.Checked)
                 threads = 3;
 
-            Processus processus = new Processus(nom, priorite, instructionsCalcul, instructionsEs, threads);
+            Processus = new Processus(nom, priorite, instructionsCalcul, instructionsEs, threads);
             Close();
         }
 
