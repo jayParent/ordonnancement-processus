@@ -59,6 +59,7 @@
             this.dgv_processus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_processus.Location = new System.Drawing.Point(12, 52);
             this.dgv_processus.Name = "dgv_processus";
+            this.dgv_processus.RowHeadersVisible = false;
             this.dgv_processus.Size = new System.Drawing.Size(460, 453);
             this.dgv_processus.TabIndex = 3;
             this.dgv_processus.Text = "dataGridView1";

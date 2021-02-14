@@ -56,6 +56,7 @@
             this.textBox_nom.Name = "textBox_nom";
             this.textBox_nom.Size = new System.Drawing.Size(200, 23);
             this.textBox_nom.TabIndex = 0;
+            this.textBox_nom.Text = "Processus 1";
             // 
             // groupBox_infoProcessus
             // 
@@ -116,6 +117,11 @@
             this.numericUpDown_es.Name = "numericUpDown_es";
             this.numericUpDown_es.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown_es.TabIndex = 1;
+            this.numericUpDown_es.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numericUpDown_calculs
             // 
@@ -123,6 +129,11 @@
             this.numericUpDown_calculs.Name = "numericUpDown_calculs";
             this.numericUpDown_calculs.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown_calculs.TabIndex = 1;
+            this.numericUpDown_calculs.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             // 
             // numericUpDown_priorite
             // 

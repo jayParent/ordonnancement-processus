@@ -15,14 +15,11 @@ namespace Ordonnancement_processus
     {
         private DataTable ProcessusDataTable = new DataTable();
         private BindingSource ProcessusBindingSource = new BindingSource();
+        private Simulateur Simulateur = new Simulateur();
 
         public MenuPrincipal()
         {
             InitializeComponent();
-            dgv_processus.AutoGenerateColumns = true;
-            ProcessusBindingSource.DataSource = ProcessusDataTable;
-            dgv_processus.DataSource = ProcessusBindingSource;
-            dgv_processus.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
         }
 
         private void btn_ajouterProcessus_Click(object sender, EventArgs e)
@@ -32,24 +29,26 @@ namespace Ordonnancement_processus
             menuCreationProcessus.Show();
         }
 
+        private void ClearDataTable()
+        {
+            ProcessusDataTable = new DataTable();
+            ProcessusBindingSource.DataSource = ProcessusDataTable;
+            dgv_processus.DataSource = ProcessusBindingSource;
+        }
+
         private void AddProcessusToDgv(object sender, FormClosingEventArgs e)
         {
+            ClearDataTable();
+
             MenuCreationProcessus processusForm = sender as MenuCreationProcessus;
+            Simulateur.ProcessusList.Add(processusForm.Processus);
 
-            string nomProcessus = processusForm.Processus.Nom;
-
-            ProcessusDataTable.Columns.Add(nomProcessus);
-
-            DataRow processusInfo = ProcessusDataTable.NewRow();
-            processusInfo[nomProcessus] = processusForm.Processus.Pid;
-
-            ProcessusDataTable.Rows.Add(processusInfo);
-
+            Simulateur.CreateDataTable(ProcessusDataTable);
         }
 
         private void btn_lancer_Click(object sender, EventArgs e)
         {
-            
+            Simulateur.LancerSimulation();
         }
     }
 }

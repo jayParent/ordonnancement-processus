@@ -31,8 +31,23 @@ namespace Ordonnancement_processus
             else if (radioButton_threeThreads.Checked)
                 threads = 3;
 
-            Processus = new Processus(nom, priorite, instructionsCalcul, instructionsEs, threads);
-            Close();
+            if(instructionsCalcul + instructionsEs > 12)
+                ShowErrorMessageBox();
+            else
+            {
+                Processus = new Processus(nom, priorite, instructionsCalcul, instructionsEs, threads);
+                Close();
+            }
+            
+        }
+
+        private void ShowErrorMessageBox()
+        {
+            string message = "Veuillez entrer un nombre d'instructions maximal de 12.";
+            string caption = "Erreur";
+
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            MessageBox.Show(message, caption, buttons);
         }
 
         private void button_annulerProcessus_Click(object sender, EventArgs e)
