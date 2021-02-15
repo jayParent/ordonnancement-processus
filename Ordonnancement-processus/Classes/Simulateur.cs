@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Ordonnancement_processus.Classes
 {
@@ -12,6 +14,7 @@ namespace Ordonnancement_processus.Classes
 
         public Simulateur()
         {
+            PolitiqueOrdonnancement = "pp";
             ProcessusList = new List<Processus>();
         }
 
@@ -38,16 +41,48 @@ namespace Ordonnancement_processus.Classes
                     {
                         row[processus.ProcessusInfo] = "";
                     }
-                    
                 }
 
                 dataTable.Rows.Add(row);
             }
         }
 
-        public void LancerSimulation()
+        public List<Instruction> OrdonnancementDesProcessus()
         {
-            
+            List<Instruction> ordonnancement = new List<Instruction>();
+
+            switch (PolitiqueOrdonnancement)
+            {
+                case "pp":
+                    List<Processus> processusOrdonneParPriorite = ProcessusList.OrderByDescending(p => p.Priorite).ToList();
+
+                    foreach (Processus processus in processusOrdonneParPriorite)
+                    {
+                        foreach (Instruction instruction in processus.Instructions)
+                        {
+                            ordonnancement.Add(instruction);
+                        }
+                    }
+
+                    break;
+            }
+
+            return ordonnancement;
+        }
+
+        public void Simulation()
+        {
+            List<Instruction> ordonnancement = OrdonnancementDesProcessus();
+
+            foreach (Instruction instruction in ordonnancement)
+            {
+                Console.WriteLine(instruction.Type);
+
+                if (instruction.Temps == 1)
+                    Thread.Sleep(1000);
+                else if (instruction.Temps == 3)
+                    Thread.Sleep(3000);
+            }
         }
     }
 }

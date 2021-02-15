@@ -31,14 +31,18 @@
             this.btn_ajouterProcessus = new System.Windows.Forms.Button();
             this.btn_lancer = new System.Windows.Forms.Button();
             this.dgv_processus = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton_pca = new System.Windows.Forms.RadioButton();
+            this.radioButton_pp = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_processus)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ajouterProcessus
             // 
-            this.btn_ajouterProcessus.Location = new System.Drawing.Point(12, 12);
+            this.btn_ajouterProcessus.Location = new System.Drawing.Point(38, 13);
             this.btn_ajouterProcessus.Name = "btn_ajouterProcessus";
-            this.btn_ajouterProcessus.Size = new System.Drawing.Size(150, 25);
+            this.btn_ajouterProcessus.Size = new System.Drawing.Size(126, 25);
             this.btn_ajouterProcessus.TabIndex = 0;
             this.btn_ajouterProcessus.Text = "Ajouter un processus";
             this.btn_ajouterProcessus.UseVisualStyleBackColor = true;
@@ -46,7 +50,7 @@
             // 
             // btn_lancer
             // 
-            this.btn_lancer.Location = new System.Drawing.Point(397, 12);
+            this.btn_lancer.Location = new System.Drawing.Point(119, 15);
             this.btn_lancer.Name = "btn_lancer";
             this.btn_lancer.Size = new System.Drawing.Size(75, 25);
             this.btn_lancer.TabIndex = 2;
@@ -64,17 +68,55 @@
             this.dgv_processus.TabIndex = 3;
             this.dgv_processus.Text = "dataGridView1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton_pca);
+            this.groupBox1.Controls.Add(this.radioButton_pp);
+            this.groupBox1.Controls.Add(this.btn_lancer);
+            this.groupBox1.Location = new System.Drawing.Point(256, -2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(203, 48);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButton_pca
+            // 
+            this.radioButton_pca.AutoSize = true;
+            this.radioButton_pca.Location = new System.Drawing.Point(65, 17);
+            this.radioButton_pca.Name = "radioButton_pca";
+            this.radioButton_pca.Size = new System.Drawing.Size(48, 19);
+            this.radioButton_pca.TabIndex = 4;
+            this.radioButton_pca.TabStop = true;
+            this.radioButton_pca.Text = "PCA";
+            this.radioButton_pca.UseVisualStyleBackColor = true;
+            this.radioButton_pca.CheckedChanged += new System.EventHandler(this.radioButton_pca_CheckedChanged);
+            // 
+            // radioButton_pp
+            // 
+            this.radioButton_pp.AutoSize = true;
+            this.radioButton_pp.Checked = true;
+            this.radioButton_pp.Location = new System.Drawing.Point(20, 17);
+            this.radioButton_pp.Name = "radioButton_pp";
+            this.radioButton_pp.Size = new System.Drawing.Size(39, 19);
+            this.radioButton_pp.TabIndex = 3;
+            this.radioButton_pp.TabStop = true;
+            this.radioButton_pp.Text = "PP";
+            this.radioButton_pp.UseVisualStyleBackColor = true;
+            this.radioButton_pp.CheckedChanged += new System.EventHandler(this.radioButton_pp_CheckedChanged);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 517);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_processus);
-            this.Controls.Add(this.btn_lancer);
             this.Controls.Add(this.btn_ajouterProcessus);
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_processus)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -84,6 +126,9 @@
         private System.Windows.Forms.Button btn_ajouterProcessus;
         private System.Windows.Forms.Button btn_lancer;
         private System.Windows.Forms.DataGridView dgv_processus;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton_pp;
+        private System.Windows.Forms.RadioButton radioButton_pca;
     }
 }
 
