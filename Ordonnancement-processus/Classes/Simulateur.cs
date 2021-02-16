@@ -70,6 +70,12 @@ namespace Ordonnancement_processus.Classes
             return ordonnancement;
         }
 
+        // États des processus
+        // En attente => Élu => Endormi (quand un processus fait E/S, ordonnanceur passe à un autre processus) => En attente => Terminé
+
+        // Gestion de la famine
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+
         public void Simulation()
         {
             List<Instruction> ordonnancement = OrdonnancementDesProcessus();
