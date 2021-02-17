@@ -95,6 +95,12 @@ namespace Ordonnancement_processus.Classes
 
         // Gestion de la famine
         // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
 
         public void Simulation()
         {
