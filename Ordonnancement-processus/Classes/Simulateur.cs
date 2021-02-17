@@ -55,14 +55,34 @@ namespace Ordonnancement_processus.Classes
             {
                 case "pp":
                     List<Processus> processusOrdonneParPriorite = ProcessusList.OrderByDescending(p => p.Priorite).ToList();
+                    int indexProcBloque = 0;
 
-                    foreach (Processus processus in processusOrdonneParPriorite)
-                    {
-                        foreach (Instruction instruction in processus.Instructions)
-                        {
-                            ordonnancement.Add(instruction);
-                        }
-                    }
+
+
+
+                    //for (int i = 0; i < processusOrdonneParPriorite.Count; i++)
+                    //{
+                    //    List<Instruction> instructions = processusOrdonneParPriorite[i].Instructions;
+                    //    for (int j = 0; j < instructions.Count; j++)
+                    //    {
+                    //        if (instructions[j].Type == "calcul")
+                    //        {
+                    //            ordonnancement.Add(instructions[j]);
+                    //        }
+                    //        else if (instructions[j].Type == "es")
+                    //        {
+                    //            indexProcBloque = j;
+                    //            i++;
+                    //        }
+                    //    }
+                    //}
+                    //foreach (Processus processus in processusOrdonneParPriorite)
+                    //{
+                    //    foreach (Instruction instruction in processus.Instructions)
+                    //    {
+                    //        ordonnancement.Add(instruction);
+                    //    }
+                    //}
 
                     break;
             }
@@ -84,10 +104,10 @@ namespace Ordonnancement_processus.Classes
             {
                 Console.WriteLine(instruction.Type);
 
-                if (instruction.Temps == 1)
-                    Thread.Sleep(1000);
-                else if (instruction.Temps == 3)
-                    Thread.Sleep(3000);
+                //if (instruction.Temps == 1)
+                //    Thread.Sleep(1000);
+                //else if (instruction.Temps == 3)
+                //    Thread.Sleep(3000);
             }
         }
     }
