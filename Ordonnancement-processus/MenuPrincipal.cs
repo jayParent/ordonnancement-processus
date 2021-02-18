@@ -48,7 +48,7 @@ namespace Ordonnancement_processus
 
         private void btn_lancer_Click(object sender, EventArgs e)
         {
-            Simulateur.Simulation();
+            Simulateur.Simulation(dgv_processus);
         }
 
         private void radioButton_pp_CheckedChanged(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Ordonnancement_processus
 
         private void radioButton_pca_CheckedChanged(object sender, EventArgs e)
         {
-            Simulateur.PolitiqueOrdonnancement = "pca";
+            Simulateur.PolitiqueOrdonnancement = "paps";
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Ordonnancement_processus.Classes
 {
@@ -55,34 +57,38 @@ namespace Ordonnancement_processus.Classes
             {
                 case "pp":
                     List<Processus> processusOrdonneParPriorite = ProcessusList.OrderByDescending(p => p.Priorite).ToList();
-                    int indexProcBloque = 0;
+                    bool running = true;
 
+                    while (running)
+                    {
+                        for (int i = 0; i < processusOrdonneParPriorite.Count; i++)
+                        {
+                            for (int j = processusOrdonneParPriorite[i].InstructionCourante; j < processusOrdonneParPriorite[i].Instructions.Count; j++)
+                            {
+                                ordonnancement.Add(processusOrdonneParPriorite[i].Instructions[j]);
+   
+                                processusOrdonneParPriorite[i].InstructionCourante += 1;
 
+                                if (processusOrdonneParPriorite[i].InstructionCourante == processusOrdonneParPriorite[i].InstructionsTotal)
+                                {
+                                    processusOrdonneParPriorite[i].Termine = true;
+                                }
 
+                                if (processusOrdonneParPriorite[i].Instructions[j].Type == "es")
+                                {
+                                    break;
+                                }
+                            }
+                        }
 
-                    //for (int i = 0; i < processusOrdonneParPriorite.Count; i++)
-                    //{
-                    //    List<Instruction> instructions = processusOrdonneParPriorite[i].Instructions;
-                    //    for (int j = 0; j < instructions.Count; j++)
-                    //    {
-                    //        if (instructions[j].Type == "calcul")
-                    //        {
-                    //            ordonnancement.Add(instructions[j]);
-                    //        }
-                    //        else if (instructions[j].Type == "es")
-                    //        {
-                    //            indexProcBloque = j;
-                    //            i++;
-                    //        }
-                    //    }
-                    //}
-                    //foreach (Processus processus in processusOrdonneParPriorite)
-                    //{
-                    //    foreach (Instruction instruction in processus.Instructions)
-                    //    {
-                    //        ordonnancement.Add(instruction);
-                    //    }
-                    //}
+                        foreach (Processus processus in processusOrdonneParPriorite)
+                        {
+                            if (processus.Termine == false)
+                                break;
+                            else
+                                running = false;
+                        }
+                    }
 
                     break;
             }
@@ -95,14 +101,9 @@ namespace Ordonnancement_processus.Classes
 
         // Gestion de la famine
         // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
 
-        public void Simulation()
+
+        public void Simulation(DataGridView dgv)
         {
             List<Instruction> ordonnancement = OrdonnancementDesProcessus();
 
@@ -115,6 +116,8 @@ namespace Ordonnancement_processus.Classes
                 //else if (instruction.Temps == 3)
                 //    Thread.Sleep(3000);
             }
+
+            
         }
     }
 }

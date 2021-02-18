@@ -32,7 +32,7 @@
             this.btn_lancer = new System.Windows.Forms.Button();
             this.dgv_processus = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton_pca = new System.Windows.Forms.RadioButton();
+            this.radioButton_paps = new System.Windows.Forms.RadioButton();
             this.radioButton_pp = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_processus)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -70,7 +70,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton_pca);
+            this.groupBox1.Controls.Add(this.radioButton_paps);
             this.groupBox1.Controls.Add(this.radioButton_pp);
             this.groupBox1.Controls.Add(this.btn_lancer);
             this.groupBox1.Location = new System.Drawing.Point(256, -2);
@@ -79,17 +79,17 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
-            // radioButton_pca
+            // radioButton_paps
             // 
-            this.radioButton_pca.AutoSize = true;
-            this.radioButton_pca.Location = new System.Drawing.Point(65, 17);
-            this.radioButton_pca.Name = "radioButton_pca";
-            this.radioButton_pca.Size = new System.Drawing.Size(48, 19);
-            this.radioButton_pca.TabIndex = 4;
-            this.radioButton_pca.TabStop = true;
-            this.radioButton_pca.Text = "PCA";
-            this.radioButton_pca.UseVisualStyleBackColor = true;
-            this.radioButton_pca.CheckedChanged += new System.EventHandler(this.radioButton_pca_CheckedChanged);
+            this.radioButton_paps.AutoSize = true;
+            this.radioButton_paps.Location = new System.Drawing.Point(65, 17);
+            this.radioButton_paps.Name = "radioButton_paps";
+            this.radioButton_paps.Size = new System.Drawing.Size(52, 19);
+            this.radioButton_paps.TabIndex = 4;
+            this.radioButton_paps.TabStop = true;
+            this.radioButton_paps.Text = "PAPS";
+            this.radioButton_paps.UseVisualStyleBackColor = true;
+            this.radioButton_paps.CheckedChanged += new System.EventHandler(this.radioButton_pca_CheckedChanged);
             // 
             // radioButton_pp
             // 
@@ -128,7 +128,7 @@
         private System.Windows.Forms.DataGridView dgv_processus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton_pp;
-        private System.Windows.Forms.RadioButton radioButton_pca;
+        private System.Windows.Forms.RadioButton radioButton_paps;
     }
 }
 
