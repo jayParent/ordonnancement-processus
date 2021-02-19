@@ -13,10 +13,16 @@ namespace Ordonnancement_processus.Classes
     {
         public string PolitiqueOrdonnancement { get; set; }
         public List<Processus> ProcessusList { get; set; }
+        public List<Instruction> Ordonnancement = new List<Instruction>();
+        public int OrdonnancementIndex { get; set; }
+        public System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+        public int TimerInterval { get; set; }
 
         public Simulateur()
         {
             PolitiqueOrdonnancement = "pp";
+            OrdonnancementIndex = 0;
+            TimerInterval = 1000;
             ProcessusList = new List<Processus>();
         }
 
@@ -101,21 +107,30 @@ namespace Ordonnancement_processus.Classes
 
         // Gestion de la famine
         // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
+        
+        private void NextInstruction(Object sender, EventArgs e, DataGridView dgv)
+        {
+            //if (Ordonnancement[OrdonnancementIndex].Temps == 1)
+            //    TimerInterval = 1000;
+            //else if (Ordonnancement[OrdonnancementIndex].Temps == 3)
+            //    TimerInterval = 3000;
 
+            dgv.Rows[Ordonnancement[OrdonnancementIndex].Row].Cells[Ordonnancement[OrdonnancementIndex].Col].Style.BackColor = Color.LightGreen;
+            OrdonnancementIndex += 1;
+
+            if (OrdonnancementIndex >= Ordonnancement.Count)
+                Timer.Stop();
+
+        }
 
         public void Simulation(DataGridView dgv)
         {
-            List<Instruction> ordonnancement = OrdonnancementDesProcessus();
+            Ordonnancement = OrdonnancementDesProcessus();
 
-            foreach (Instruction instruction in ordonnancement)
-            {
-                Console.WriteLine(instruction.Type);
-
-                //if (instruction.Temps == 1)
-                //    Thread.Sleep(1000);
-                //else if (instruction.Temps == 3)
-                //    Thread.Sleep(3000);
-            }
+            Timer.Tick += new EventHandler((sender, e) => NextInstruction(sender, e, dgv));
+            Timer.Interval = TimerInterval;
+            Timer.Enabled = true;
+            Timer.Start();
 
             
         }

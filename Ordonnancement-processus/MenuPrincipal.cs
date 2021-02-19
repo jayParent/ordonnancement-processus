@@ -16,15 +16,17 @@ namespace Ordonnancement_processus
         private DataTable ProcessusDataTable = new DataTable();
         private BindingSource ProcessusBindingSource = new BindingSource();
         private Simulateur Simulateur = new Simulateur();
+        private int ProcessusCounter { get; set; }
 
         public MenuPrincipal()
         {
             InitializeComponent();
+            ProcessusCounter = 0;
         }
 
         private void btn_ajouterProcessus_Click(object sender, EventArgs e)
         {
-            MenuCreationProcessus menuCreationProcessus = new MenuCreationProcessus();
+            MenuCreationProcessus menuCreationProcessus = new MenuCreationProcessus(ProcessusCounter);
             menuCreationProcessus.FormClosing += new FormClosingEventHandler(AddProcessusToDgv);
             menuCreationProcessus.Show();
         }
@@ -42,12 +44,15 @@ namespace Ordonnancement_processus
 
             MenuCreationProcessus processusForm = sender as MenuCreationProcessus;
             Simulateur.ProcessusList.Add(processusForm.Processus);
+            ProcessusCounter += 1;
 
             Simulateur.CreateDataTable(ProcessusDataTable);
         }
 
         private void btn_lancer_Click(object sender, EventArgs e)
         {
+            dgv_processus.ClearSelection();
+            dgv_processus.RowsDefaultCellStyle.BackColor = Color.White;
             Simulateur.Simulation(dgv_processus);
         }
 

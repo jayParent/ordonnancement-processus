@@ -12,10 +12,12 @@ namespace Ordonnancement_processus
     public partial class MenuCreationProcessus : Form
     {
         public Processus Processus { get; set; }
+        private int ProcessusCounter { get; set; }
 
-        public MenuCreationProcessus()
+        public MenuCreationProcessus(int processusCounter)
         {
             InitializeComponent();
+            ProcessusCounter = processusCounter;
         }
 
         private void button_creerProcessus_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace Ordonnancement_processus
                 ShowErrorMessageBox();
             else
             {
-                Processus = new Processus(nom, priorite, instructionsCalcul, instructionsEs, threads);
+                Processus = new Processus(ProcessusCounter, nom, priorite, instructionsCalcul, instructionsEs, threads);
                 Close();
             }
             

@@ -25,9 +25,9 @@ namespace Ordonnancement_processus.Classes
         {
         }
 
-        public Processus(string nom, int priorite, int instructionsCalculs, int instructionsEs, int threads)
+        public Processus(int pid, string nom, int priorite, int instructionsCalculs, int instructionsEs, int threads)
         {
-            Pid = DateTime.UtcNow.Millisecond;
+            Pid = pid;
             Nom = nom;
             Priorite = priorite;
             Etat = "En attente";
@@ -38,24 +38,27 @@ namespace Ordonnancement_processus.Classes
             InstructionCourante = 0;
             Threads = threads;
             ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", Nom, Pid, Priorite, Etat);
+            Instructions = CreateInstructions();
 
-            List<Instruction> instructions = CreateInstructions();
-            Instructions = ShuffleInstructions(instructions);
+            //Instructions = ShuffleInstructions(instructions);
 
         }
 
         private List<Instruction> CreateInstructions()
         {
             List<Instruction> instructions = new List<Instruction>();
+            int row = 0;
 
             for (int i = 0; i < InstructionsCalculs; i++)
             {
-                instructions.Add(new Instruction("calcul"));
+                instructions.Add(new Instruction("calcul", row, Pid));
+                row += 1;
             }
 
             for (int i = 0; i < InstructionsEs; i++)
             {
-                instructions.Add(new Instruction("es"));
+                instructions.Add(new Instruction("es", row, Pid));
+                row += 1;
             }
 
             return instructions;
