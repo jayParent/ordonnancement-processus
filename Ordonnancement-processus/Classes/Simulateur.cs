@@ -62,44 +62,88 @@ namespace Ordonnancement_processus.Classes
             switch (PolitiqueOrdonnancement)
             {
                 case "pp":
-                    List<Processus> processusOrdonneParPriorite = ProcessusList.OrderByDescending(p => p.Priorite).ToList();
-                    bool running = true;
-
-                    while (running)
-                    {
-                        for (int i = 0; i < processusOrdonneParPriorite.Count; i++)
-                        {
-                            for (int j = processusOrdonneParPriorite[i].InstructionCourante; j < processusOrdonneParPriorite[i].Instructions.Count; j++)
-                            {
-                                ordonnancement.Add(processusOrdonneParPriorite[i].Instructions[j]);
-   
-                                processusOrdonneParPriorite[i].InstructionCourante += 1;
-
-                                if (processusOrdonneParPriorite[i].InstructionCourante == processusOrdonneParPriorite[i].InstructionsTotal)
-                                {
-                                    processusOrdonneParPriorite[i].Termine = true;
-                                }
-
-                                if (processusOrdonneParPriorite[i].Instructions[j].Type == "es")
-                                {
-                                    break;
-                                }
-                            }
-                        }
-
-                        foreach (Processus processus in processusOrdonneParPriorite)
-                        {
-                            if (processus.Termine == false)
-                                break;
-                            else
-                                running = false;
-                        }
-                    }
-
+                    OrdonnancementParPriorite(ordonnancement);
+                    break;
+                case "paps":
+                    OrdonnancementPAPS(ordonnancement);
                     break;
             }
 
             return ordonnancement;
+        }
+
+        private void OrdonnancementPAPS(List<Instruction> ordonnancement)
+        {
+            // TODO
+            bool running = true;
+
+            while (running)
+            {
+                for (int i = 0; i < ProcessusList.Count; i++)
+                {
+                    for (int j = ProcessusList[i].InstructionCourante; j < ProcessusList[i].Instructions.Count; j++)
+                    {
+                        ordonnancement.Add(ProcessusList[i].Instructions[j]);
+
+                        ProcessusList[i].InstructionCourante += 1;
+
+                        if (ProcessusList[i].InstructionCourante == ProcessusList[i].InstructionsTotal)
+                        {
+                            ProcessusList[i].Termine = true;
+                        }
+
+                        if (ProcessusList[i].Instructions[j].Type == "es")
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                foreach (Processus processus in ProcessusList)
+                {
+                    if (processus.Termine == false)
+                        break;
+                    else
+                        running = false;
+                }
+            }
+        }
+
+        private void OrdonnancementParPriorite(List<Instruction> ordonnancement)
+        {
+            List<Processus> processusOrdonneParPriorite = ProcessusList.OrderByDescending(p => p.Priorite).ToList();
+            bool running = true;
+
+            while (running)
+            {
+                for (int i = 0; i < processusOrdonneParPriorite.Count; i++)
+                {
+                    for (int j = processusOrdonneParPriorite[i].InstructionCourante; j < processusOrdonneParPriorite[i].Instructions.Count; j++)
+                    {
+                        ordonnancement.Add(processusOrdonneParPriorite[i].Instructions[j]);
+
+                        processusOrdonneParPriorite[i].InstructionCourante += 1;
+
+                        if (processusOrdonneParPriorite[i].InstructionCourante == processusOrdonneParPriorite[i].InstructionsTotal)
+                        {
+                            processusOrdonneParPriorite[i].Termine = true;
+                        }
+
+                        if (processusOrdonneParPriorite[i].Instructions[j].Type == "es")
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                foreach (Processus processus in processusOrdonneParPriorite)
+                {
+                    if (processus.Termine == false)
+                        break;
+                    else
+                        running = false;
+                }
+            }
         }
 
         // États des processus
@@ -107,7 +151,7 @@ namespace Ordonnancement_processus.Classes
 
         // Gestion de la famine
         // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-        
+
         private void NextInstruction(Object sender, EventArgs e, DataGridView dgv)
         {
             //if (Ordonnancement[OrdonnancementIndex].Temps == 1)
@@ -125,14 +169,13 @@ namespace Ordonnancement_processus.Classes
 
         public void Simulation(DataGridView dgv)
         {
+            // TODO: Gestion de la famine; augmenter priorite des procs
             Ordonnancement = OrdonnancementDesProcessus();
 
             Timer.Tick += new EventHandler((sender, e) => NextInstruction(sender, e, dgv));
             Timer.Interval = TimerInterval;
             Timer.Enabled = true;
             Timer.Start();
-
-            
         }
     }
 }
