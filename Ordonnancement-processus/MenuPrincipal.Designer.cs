@@ -34,13 +34,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton_paps = new System.Windows.Forms.RadioButton();
             this.radioButton_pp = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_processus)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ajouterProcessus
             // 
-            this.btn_ajouterProcessus.Location = new System.Drawing.Point(38, 13);
+            this.btn_ajouterProcessus.Location = new System.Drawing.Point(12, 13);
             this.btn_ajouterProcessus.Name = "btn_ajouterProcessus";
             this.btn_ajouterProcessus.Size = new System.Drawing.Size(126, 25);
             this.btn_ajouterProcessus.TabIndex = 0;
@@ -104,11 +105,22 @@
             this.radioButton_pp.UseVisualStyleBackColor = true;
             this.radioButton_pp.CheckedChanged += new System.EventHandler(this.radioButton_pp_CheckedChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(160, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 517);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_processus);
             this.Controls.Add(this.btn_ajouterProcessus);
@@ -129,6 +141,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton_pp;
         private System.Windows.Forms.RadioButton radioButton_paps;
+        private System.Windows.Forms.Button button1;
     }
 }
 

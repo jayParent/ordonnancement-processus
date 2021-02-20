@@ -130,7 +130,7 @@
             this.numericUpDown_calculs.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown_calculs.TabIndex = 1;
             this.numericUpDown_calculs.Value = new decimal(new int[] {
-            6,
+            2,
             0,
             0,
             0});

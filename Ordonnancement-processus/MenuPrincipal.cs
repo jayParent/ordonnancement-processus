@@ -53,7 +53,8 @@ namespace Ordonnancement_processus
         {
             dgv_processus.ClearSelection();
             dgv_processus.RowsDefaultCellStyle.BackColor = Color.White;
-            Simulateur.Simulation(dgv_processus);
+            Simulateur.Simulation(dgv_processus, ProcessusDataTable);
+            btn_lancer.Enabled = false;
         }
 
         private void radioButton_pp_CheckedChanged(object sender, EventArgs e)
@@ -64,6 +65,13 @@ namespace Ordonnancement_processus
         private void radioButton_pca_CheckedChanged(object sender, EventArgs e)
         {
             Simulateur.PolitiqueOrdonnancement = "paps";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal frm = new MenuPrincipal();
+            frm.Show();
+            this.Dispose(false);
         }
     }
 }

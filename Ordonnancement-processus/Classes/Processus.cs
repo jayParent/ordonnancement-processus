@@ -40,6 +40,7 @@ namespace Ordonnancement_processus.Classes
             ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", Nom, Pid, Priorite, Etat);
             Instructions = CreateInstructions();
 
+            //List<Instruction> instructions = CreateInstructions();
             //Instructions = ShuffleInstructions(instructions);
 
         }
@@ -51,13 +52,13 @@ namespace Ordonnancement_processus.Classes
 
             for (int i = 0; i < InstructionsCalculs; i++)
             {
-                instructions.Add(new Instruction("calcul", row, Pid));
+                instructions.Add(new Instruction("calcul", row, Pid, Pid));
                 row += 1;
             }
 
             for (int i = 0; i < InstructionsEs; i++)
             {
-                instructions.Add(new Instruction("es", row, Pid));
+                instructions.Add(new Instruction("es", row, Pid, Pid));
                 row += 1;
             }
 

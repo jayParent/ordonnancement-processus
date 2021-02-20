@@ -16,13 +16,11 @@ namespace Ordonnancement_processus.Classes
         public List<Instruction> Ordonnancement = new List<Instruction>();
         public int OrdonnancementIndex { get; set; }
         public System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
-        public int TimerInterval { get; set; }
 
         public Simulateur()
         {
             PolitiqueOrdonnancement = "pp";
             OrdonnancementIndex = 0;
-            TimerInterval = 1000;
             ProcessusList = new List<Processus>();
         }
 
@@ -35,7 +33,7 @@ namespace Ordonnancement_processus.Classes
                 dataTable.Columns.Add(processusHeader);
             }
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 13; i++)
             {
                 DataRow row = dataTable.NewRow();
 
@@ -152,30 +150,83 @@ namespace Ordonnancement_processus.Classes
         // Gestion de la famine
         // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
 
-        private void NextInstruction(Object sender, EventArgs e, DataGridView dgv)
+        private void NextInstruction(Object sender, EventArgs e, DataGridView dgv, DataTable dataTable)
         {
-            //if (Ordonnancement[OrdonnancementIndex].Temps == 1)
-            //    TimerInterval = 1000;
-            //else if (Ordonnancement[OrdonnancementIndex].Temps == 3)
-            //    TimerInterval = 3000;
+            if (Ordonnancement[OrdonnancementIndex].Temps == 1)
+                Timer.Interval = 1000;
+            else if (Ordonnancement[OrdonnancementIndex].Temps == 3)
+                Timer.Interval = 1000;
+
+            Processus processus = ProcessusList.Find(p => p.Pid == Ordonnancement[OrdonnancementIndex].ProcessusId);
+            List<Processus> processusBloques = ProcessusList.Where(p => p.Pid != Ordonnancement[OrdonnancementIndex].ProcessusId).ToList();
+
+            if(processus.Etat == "En attente")
+            {
+                UpdateProcessusEtat(dataTable, processus, "Elu");
+            }
+
+            foreach (Processus p in processusBloques)
+            {
+                if(p.Etat == "Elu")
+                    UpdateProcessusEtat(dataTable, p, "Bloque");
+            }
+
+            if(Ordonnancement[OrdonnancementIndex].Row == processus.InstructionsTotal - 1)
+            {
+                UpdateProcessusEtat(dataTable, processus, "Termine");
+            }
 
             dgv.Rows[Ordonnancement[OrdonnancementIndex].Row].Cells[Ordonnancement[OrdonnancementIndex].Col].Style.BackColor = Color.LightGreen;
             OrdonnancementIndex += 1;
 
             if (OrdonnancementIndex >= Ordonnancement.Count)
+            {
                 Timer.Stop();
-
+                return;
+            }
         }
 
-        public void Simulation(DataGridView dgv)
+        private void UpdateProcessusEtat(DataTable dataTable, Processus processus, string etat)
         {
-            // TODO: Gestion de la famine; augmenter priorite des procs
-            Ordonnancement = OrdonnancementDesProcessus();
+            string oldColName = processus.ProcessusInfo;
+            processus.Etat = etat;
+            processus.ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", processus.Nom, processus.Pid, processus.Priorite, processus.Etat);
+            dataTable.Columns[oldColName].ColumnName = processus.ProcessusInfo;
+        }
 
-            Timer.Tick += new EventHandler((sender, e) => NextInstruction(sender, e, dgv));
-            Timer.Interval = TimerInterval;
+        public void Simulation(DataGridView dgv, DataTable dataTable)
+        {
+            // TODO: Gestion de la famine; diminuer priorite du proc qui vient d'etre elu
+            Ordonnancement = OrdonnancementDesProcessus();
+            OrdonnancementIndex = 0;
+
+            Timer.Tick += new EventHandler((sender, e) => NextInstruction(sender, e, dgv, dataTable));
+            Timer.Interval = 1000;
             Timer.Enabled = true;
             Timer.Start();
+
+            //if (Ordonnancement[OrdonnancementIndex].ProcessusId == processus.Pid)
+            //{
+            //    if (Ordonnancement[OrdonnancementIndex].Row == processus.InstructionsTotal - 1)
+            //    {
+            //        UpdateProcessusEtat(dataTable, "Terminé");
+            //        for (int i = 0; i < processus.InstructionsTotal; i++)
+            //        {
+            //            dgv.Rows[i].Cells[processus.Pid].Style.BackColor = Color.LightGreen;
+            //        }
+            //        break;
+            //    }
+
+            //    UpdateProcessusEtat(dataTable, "Élu");
+            //    break;
+            //}
+            //else
+            //{
+            //    UpdateProcessusEtat(dataTable, "En attente");
+            //    break;
+            //}
         }
+
+
     }
 }
