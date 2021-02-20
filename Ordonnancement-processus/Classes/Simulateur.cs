@@ -144,12 +144,6 @@ namespace Ordonnancement_processus.Classes
             }
         }
 
-        // États des processus
-        // En attente => Élu => Endormi (quand un processus fait E/S, ordonnanceur passe à un autre processus) => En attente => Terminé
-
-        // Gestion de la famine
-        // Augmenter la priorité des processus qui n'ont pas été élu depuis longtemps
-
         private void NextInstruction(Object sender, EventArgs e, DataGridView dgv, DataTable dataTable)
         {
             if (Ordonnancement[OrdonnancementIndex].Temps == 1)
@@ -190,13 +184,17 @@ namespace Ordonnancement_processus.Classes
         {
             string oldColName = processus.ProcessusInfo;
             processus.Etat = etat;
+
+            if (etat == "Elu")
+                processus.Priorite -= 1;
+
             processus.ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", processus.Nom, processus.Pid, processus.Priorite, processus.Etat);
+
             dataTable.Columns[oldColName].ColumnName = processus.ProcessusInfo;
         }
 
         public void Simulation(DataGridView dgv, DataTable dataTable)
         {
-            // TODO: Gestion de la famine; diminuer priorite du proc qui vient d'etre elu
             Ordonnancement = OrdonnancementDesProcessus();
             OrdonnancementIndex = 0;
 
