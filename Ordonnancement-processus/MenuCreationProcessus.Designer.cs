@@ -141,6 +141,11 @@
             this.numericUpDown_priorite.Name = "numericUpDown_priorite";
             this.numericUpDown_priorite.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown_priorite.TabIndex = 1;
+            this.numericUpDown_priorite.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // groupBox_threads
             // 

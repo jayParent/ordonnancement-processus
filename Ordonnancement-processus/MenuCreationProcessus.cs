@@ -12,6 +12,7 @@ namespace Ordonnancement_processus
     public partial class MenuCreationProcessus : Form
     {
         public Processus Processus { get; set; }
+        public List<Processus> Threads = new List<Processus>();
         private int ProcessusCounter { get; set; }
 
         public MenuCreationProcessus(int processusCounter)
@@ -37,10 +38,32 @@ namespace Ordonnancement_processus
                 ShowErrorMessageBox();
             else
             {
-                Processus = new Processus(ProcessusCounter, nom, priorite, instructionsCalcul, instructionsEs, threads);
-                Close();
+                if(threads > 1)
+                {
+                    Processus = new Processus(ProcessusCounter, nom, priorite, instructionsCalcul, instructionsEs, threads);
+                    SplitIntoNThreads(threads, Processus);
+                    Close();
+                }
+                else
+                {
+                    Processus = new Processus(ProcessusCounter, nom, priorite, instructionsCalcul, instructionsEs, threads);
+                    Close();
+                }
             }
-            
+        }
+
+        private void SplitIntoNThreads(int n, Processus processus)
+        {
+            int threadInstructionCalcul = processus.InstructionsCalculs / n;
+            int threadInstructionEs = processus.InstructionsEs / n;
+
+            for (int i = 0; i < n; i++)
+            {    
+                processus.InstructionsCalculs -= threadInstructionCalcul;
+                processus.InstructionsEs -= threadInstructionEs;
+
+                Threads.Add(new Processus(ProcessusCounter, i, processus.Nom, processus.Priorite, threadInstructionCalcul, threadInstructionEs));
+            }
         }
 
         private void ShowErrorMessageBox()

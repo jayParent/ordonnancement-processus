@@ -33,7 +33,7 @@ namespace Ordonnancement_processus.Classes
                 dataTable.Columns.Add(processusHeader);
             }
 
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 12; i++)
             {
                 DataRow row = dataTable.NewRow();
 
@@ -68,43 +68,6 @@ namespace Ordonnancement_processus.Classes
             }
 
             return ordonnancement;
-        }
-
-        private void OrdonnancementPAPS(List<Instruction> ordonnancement)
-        {
-            // TODO
-            bool running = true;
-
-            while (running)
-            {
-                for (int i = 0; i < ProcessusList.Count; i++)
-                {
-                    for (int j = ProcessusList[i].InstructionCourante; j < ProcessusList[i].Instructions.Count; j++)
-                    {
-                        ordonnancement.Add(ProcessusList[i].Instructions[j]);
-
-                        ProcessusList[i].InstructionCourante += 1;
-
-                        if (ProcessusList[i].InstructionCourante == ProcessusList[i].InstructionsTotal)
-                        {
-                            ProcessusList[i].Termine = true;
-                        }
-
-                        if (ProcessusList[i].Instructions[j].Type == "es")
-                        {
-                            break;
-                        }
-                    }
-                }
-
-                foreach (Processus processus in ProcessusList)
-                {
-                    if (processus.Termine == false)
-                        break;
-                    else
-                        running = false;
-                }
-            }
         }
 
         private void OrdonnancementParPriorite(List<Instruction> ordonnancement)
@@ -144,12 +107,48 @@ namespace Ordonnancement_processus.Classes
             }
         }
 
+        private void OrdonnancementPAPS(List<Instruction> ordonnancement)
+        {
+            bool running = true;
+
+            while (running)
+            {
+                for (int i = 0; i < ProcessusList.Count; i++)
+                {
+                    for (int j = ProcessusList[i].InstructionCourante; j < ProcessusList[i].Instructions.Count; j++)
+                    {
+                        ordonnancement.Add(ProcessusList[i].Instructions[j]);
+
+                        ProcessusList[i].InstructionCourante += 1;
+
+                        if (ProcessusList[i].InstructionCourante == ProcessusList[i].InstructionsTotal)
+                        {
+                            ProcessusList[i].Termine = true;
+                        }
+
+                        if (ProcessusList[i].Instructions[j].Type == "es")
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                foreach (Processus processus in ProcessusList)
+                {
+                    if (processus.Termine == false)
+                        break;
+                    else
+                        running = false;
+                }
+            }
+        }
+
         private void NextInstruction(Object sender, EventArgs e, DataGridView dgv, DataTable dataTable)
         {
             if (Ordonnancement[OrdonnancementIndex].Temps == 1)
                 Timer.Interval = 1000;
             else if (Ordonnancement[OrdonnancementIndex].Temps == 3)
-                Timer.Interval = 1000;
+                Timer.Interval = 3000;
 
             Processus processus = ProcessusList.Find(p => p.Pid == Ordonnancement[OrdonnancementIndex].ProcessusId);
             List<Processus> processusBloques = ProcessusList.Where(p => p.Pid != Ordonnancement[OrdonnancementIndex].ProcessusId).ToList();
@@ -202,29 +201,6 @@ namespace Ordonnancement_processus.Classes
             Timer.Interval = 1000;
             Timer.Enabled = true;
             Timer.Start();
-
-            //if (Ordonnancement[OrdonnancementIndex].ProcessusId == processus.Pid)
-            //{
-            //    if (Ordonnancement[OrdonnancementIndex].Row == processus.InstructionsTotal - 1)
-            //    {
-            //        UpdateProcessusEtat(dataTable, "Terminé");
-            //        for (int i = 0; i < processus.InstructionsTotal; i++)
-            //        {
-            //            dgv.Rows[i].Cells[processus.Pid].Style.BackColor = Color.LightGreen;
-            //        }
-            //        break;
-            //    }
-
-            //    UpdateProcessusEtat(dataTable, "Élu");
-            //    break;
-            //}
-            //else
-            //{
-            //    UpdateProcessusEtat(dataTable, "En attente");
-            //    break;
-            //}
         }
-
-
     }
 }

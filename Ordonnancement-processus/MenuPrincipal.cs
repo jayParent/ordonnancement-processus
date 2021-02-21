@@ -43,8 +43,22 @@ namespace Ordonnancement_processus
             ClearDataTable();
 
             MenuCreationProcessus processusForm = sender as MenuCreationProcessus;
-            Simulateur.ProcessusList.Add(processusForm.Processus);
-            ProcessusCounter += 1;
+
+            if(processusForm.Threads.Count > 0)
+            {
+                foreach (Processus processus in processusForm.Threads)
+                {
+                    Simulateur.ProcessusList.Add(processus);
+                }
+
+                ProcessusCounter += 1;
+            }
+            else
+            {
+                Simulateur.ProcessusList.Add(processusForm.Processus);
+                ProcessusCounter += 1;
+            }
+            
 
             Simulateur.CreateDataTable(ProcessusDataTable);
         }
