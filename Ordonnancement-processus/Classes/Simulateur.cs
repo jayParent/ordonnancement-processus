@@ -184,10 +184,21 @@ namespace Ordonnancement_processus.Classes
             string oldColName = processus.ProcessusInfo;
             processus.Etat = etat;
 
-            if (etat == "Elu")
-                processus.Priorite -= 1;
+            if(processus.Threads == 1)
+            {
+                if (etat == "Elu")
+                    processus.Priorite -= 1;
 
-            processus.ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", processus.Nom, processus.Pid, processus.Priorite, processus.Etat);
+                processus.ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", processus.Nom, processus.Pid, processus.Priorite, processus.Etat);
+            }
+            else
+            {
+                if (etat == "Elu")
+                    processus.Priorite -= 1;
+
+                processus.ProcessusInfo = string.Format("{0}\nPID: {1}\nThread: {4}\nPriorité: {2}\nÉtat: {3}", processus.Nom, processus.Pid, processus.Priorite, processus.Etat, processus.ThreadN);
+            }
+            
 
             dataTable.Columns[oldColName].ColumnName = processus.ProcessusInfo;
         }
