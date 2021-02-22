@@ -35,6 +35,9 @@
             this.radioButton_paps = new System.Windows.Forms.RadioButton();
             this.radioButton_pp = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.textBox_deletePid = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_processus)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +65,10 @@
             // dgv_processus
             // 
             this.dgv_processus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_processus.Location = new System.Drawing.Point(12, 52);
+            this.dgv_processus.Location = new System.Drawing.Point(12, 82);
             this.dgv_processus.Name = "dgv_processus";
             this.dgv_processus.RowHeadersVisible = false;
-            this.dgv_processus.Size = new System.Drawing.Size(460, 453);
+            this.dgv_processus.Size = new System.Drawing.Size(460, 423);
             this.dgv_processus.TabIndex = 3;
             this.dgv_processus.Text = "dataGridView1";
             // 
@@ -115,11 +118,40 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button_delete
+            // 
+            this.button_delete.Location = new System.Drawing.Point(276, 56);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(75, 23);
+            this.button_delete.TabIndex = 7;
+            this.button_delete.Text = "Supprimer";
+            this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
+            // 
+            // textBox_deletePid
+            // 
+            this.textBox_deletePid.Location = new System.Drawing.Point(228, 56);
+            this.textBox_deletePid.Name = "textBox_deletePid";
+            this.textBox_deletePid.Size = new System.Drawing.Size(35, 23);
+            this.textBox_deletePid.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(210, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Entrez le PID du processus à supprimer";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 517);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button_delete);
+            this.Controls.Add(this.textBox_deletePid);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_processus);
@@ -130,6 +162,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -142,6 +175,9 @@
         private System.Windows.Forms.RadioButton radioButton_pp;
         private System.Windows.Forms.RadioButton radioButton_paps;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_delete;
+        private System.Windows.Forms.TextBox textBox_deletePid;
+        private System.Windows.Forms.Label label1;
     }
 }
 

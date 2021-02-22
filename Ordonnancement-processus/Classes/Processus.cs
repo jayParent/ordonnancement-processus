@@ -39,9 +39,6 @@ namespace Ordonnancement_processus.Classes
             Col = Pid;
             ProcessusInfo = string.Format("{0}\nPID: {1}\nPriorité: {2}\nÉtat: {3}", Nom, Pid, Priorite, Etat);
             Instructions = CreateInstructions();
-
-            //List<Instruction> instructions = CreateInstructions();
-            //Instructions = ShuffleInstructions(instructions);
         }
 
         // Constructeur avec threads
@@ -76,21 +73,6 @@ namespace Ordonnancement_processus.Classes
             {
                 instructions.Add(new Instruction("es", row, Col, Pid));
                 row += 1;
-            }
-
-            return instructions;
-        }
-
-        public List<Instruction> ShuffleInstructions(List<Instruction> instructions)
-        {
-            int n = instructions.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = random.Next(n + 1);
-                Instruction value = instructions[k];
-                instructions[k] = instructions[n];
-                instructions[n] = value;
             }
 
             return instructions;

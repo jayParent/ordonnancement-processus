@@ -24,8 +24,11 @@ namespace Ordonnancement_processus.Classes
             ProcessusList = new List<Processus>();
         }
 
-        public void CreateDataTable(DataTable dataTable)
+        public void CreateDataTable(DataTable dataTable, bool delete, int pid)
         {
+            if(delete)
+                ProcessusList = ProcessusList.Where(p => p.Pid != pid).ToList();
+
             foreach (Processus processus in ProcessusList)
             {
                 DataColumn processusHeader = new DataColumn(processus.ProcessusInfo);

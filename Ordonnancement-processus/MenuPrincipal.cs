@@ -60,7 +60,7 @@ namespace Ordonnancement_processus
             }
             
 
-            Simulateur.CreateDataTable(ProcessusDataTable);
+            Simulateur.CreateDataTable(ProcessusDataTable, false, 0);
         }
 
         private void btn_lancer_Click(object sender, EventArgs e)
@@ -86,6 +86,13 @@ namespace Ordonnancement_processus
             MenuPrincipal frm = new MenuPrincipal();
             frm.Show();
             this.Dispose(false);
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            int pid = int.Parse(textBox_deletePid.Text);
+            ClearDataTable();
+            Simulateur.CreateDataTable(ProcessusDataTable, true, pid);
         }
     }
 }
