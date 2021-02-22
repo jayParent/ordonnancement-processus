@@ -16,6 +16,7 @@ namespace Ordonnancement_processus.Classes
         public List<Instruction> Ordonnancement = new List<Instruction>();
         public int OrdonnancementIndex { get; set; }
         public System.Windows.Forms.Timer Timer = new System.Windows.Forms.Timer();
+        public System.Windows.Forms.Timer TimerTermine = new System.Windows.Forms.Timer();
 
         public Simulateur()
         {
@@ -169,7 +170,10 @@ namespace Ordonnancement_processus.Classes
 
             if(Ordonnancement[OrdonnancementIndex].Row == processus.InstructionsTotal - 1)
             {
-                UpdateProcessusEtat(dataTable, processus, "Termine");
+                TimerTermine.Tick += new EventHandler((sender, e) => EndProcessus(sender, e, dataTable, processus, "Termine"));
+                TimerTermine.Interval = 3000;
+                TimerTermine.Enabled = true;
+                TimerTermine.Start();
             }
 
             dgv.Rows[Ordonnancement[OrdonnancementIndex].Row].Cells[Ordonnancement[OrdonnancementIndex].Col].Style.BackColor = Color.LightGreen;
@@ -180,6 +184,12 @@ namespace Ordonnancement_processus.Classes
                 Timer.Stop();
                 return;
             }
+        }
+
+        private void EndProcessus(Object sender, EventArgs e, DataTable dataTable, Processus processus, string etat)
+        {
+            UpdateProcessusEtat(dataTable, processus, etat);
+            TimerTermine.Stop();
         }
 
         private void UpdateProcessusEtat(DataTable dataTable, Processus processus, string etat)
