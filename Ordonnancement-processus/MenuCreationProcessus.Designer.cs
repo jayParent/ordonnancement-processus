@@ -54,7 +54,7 @@
             // 
             this.textBox_nom.Location = new System.Drawing.Point(154, 22);
             this.textBox_nom.Name = "textBox_nom";
-            this.textBox_nom.Size = new System.Drawing.Size(200, 23);
+            this.textBox_nom.Size = new System.Drawing.Size(267, 23);
             this.textBox_nom.TabIndex = 0;
             this.textBox_nom.Text = "Processus 1";
             // 
@@ -70,7 +70,7 @@
             this.groupBox_infoProcessus.Controls.Add(this.textBox_nom);
             this.groupBox_infoProcessus.Location = new System.Drawing.Point(12, 12);
             this.groupBox_infoProcessus.Name = "groupBox_infoProcessus";
-            this.groupBox_infoProcessus.Size = new System.Drawing.Size(360, 147);
+            this.groupBox_infoProcessus.Size = new System.Drawing.Size(473, 147);
             this.groupBox_infoProcessus.TabIndex = 1;
             this.groupBox_infoProcessus.TabStop = false;
             this.groupBox_infoProcessus.Text = "Processus";
@@ -115,7 +115,7 @@
             // 
             this.numericUpDown_es.Location = new System.Drawing.Point(234, 109);
             this.numericUpDown_es.Name = "numericUpDown_es";
-            this.numericUpDown_es.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown_es.Size = new System.Drawing.Size(187, 23);
             this.numericUpDown_es.TabIndex = 1;
             this.numericUpDown_es.Value = new decimal(new int[] {
             2,
@@ -127,7 +127,7 @@
             // 
             this.numericUpDown_calculs.Location = new System.Drawing.Point(234, 80);
             this.numericUpDown_calculs.Name = "numericUpDown_calculs";
-            this.numericUpDown_calculs.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown_calculs.Size = new System.Drawing.Size(187, 23);
             this.numericUpDown_calculs.TabIndex = 1;
             this.numericUpDown_calculs.Value = new decimal(new int[] {
             2,
@@ -139,7 +139,7 @@
             // 
             this.numericUpDown_priorite.Location = new System.Drawing.Point(234, 51);
             this.numericUpDown_priorite.Name = "numericUpDown_priorite";
-            this.numericUpDown_priorite.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown_priorite.Size = new System.Drawing.Size(187, 23);
             this.numericUpDown_priorite.TabIndex = 1;
             this.numericUpDown_priorite.Value = new decimal(new int[] {
             1,
@@ -154,7 +154,7 @@
             this.groupBox_threads.Controls.Add(this.radioButton_monoThread);
             this.groupBox_threads.Location = new System.Drawing.Point(12, 165);
             this.groupBox_threads.Name = "groupBox_threads";
-            this.groupBox_threads.Size = new System.Drawing.Size(360, 105);
+            this.groupBox_threads.Size = new System.Drawing.Size(473, 112);
             this.groupBox_threads.TabIndex = 2;
             this.groupBox_threads.TabStop = false;
             this.groupBox_threads.Text = "Threads";
@@ -193,9 +193,9 @@
             // 
             // button_creerProcesses
             // 
-            this.button_creerProcesses.Location = new System.Drawing.Point(112, 283);
+            this.button_creerProcesses.Location = new System.Drawing.Point(96, 329);
             this.button_creerProcesses.Name = "button_creerProcesses";
-            this.button_creerProcesses.Size = new System.Drawing.Size(75, 25);
+            this.button_creerProcesses.Size = new System.Drawing.Size(132, 35);
             this.button_creerProcesses.TabIndex = 3;
             this.button_creerProcesses.Text = "Créer";
             this.button_creerProcesses.UseVisualStyleBackColor = true;
@@ -203,9 +203,9 @@
             // 
             // button_annulerProcessus
             // 
-            this.button_annulerProcessus.Location = new System.Drawing.Point(193, 283);
+            this.button_annulerProcessus.Location = new System.Drawing.Point(252, 329);
             this.button_annulerProcessus.Name = "button_annulerProcessus";
-            this.button_annulerProcessus.Size = new System.Drawing.Size(75, 25);
+            this.button_annulerProcessus.Size = new System.Drawing.Size(132, 35);
             this.button_annulerProcessus.TabIndex = 4;
             this.button_annulerProcessus.Text = "Annuler";
             this.button_annulerProcessus.UseVisualStyleBackColor = true;
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 320);
+            this.ClientSize = new System.Drawing.Size(497, 403);
             this.Controls.Add(this.button_annulerProcessus);
             this.Controls.Add(this.button_creerProcesses);
             this.Controls.Add(this.groupBox_threads);
